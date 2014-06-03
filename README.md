@@ -67,7 +67,8 @@ Just create the box
 vagrant up
 ```
 
-Open aThen you may clone GitHub repos with Vagrantfiles ready to rumble to your vCloud.
+Then open a terminal and you may clone GitHub repos with Vagrantfiles ready to
+rumble to your vCloud.
 
 ### Sample vCloud walktrough
 
