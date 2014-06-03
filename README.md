@@ -58,3 +58,24 @@ Vagrant.configure("2") do |config|
 
 end
 ```
+
+## Installation
+
+Just create the box
+
+```
+vagrant up
+```
+
+Open aThen you may clone GitHub repos with Vagrantfiles ready to rumble to your vCloud.
+
+### Sample vCloud walktrough
+
+Clone the following small sample repo to build a vCloud vApp with two Ubuntu boxes.
+
+```bash
+git clone https://github.com/StefanScherer/vcloud-scenarios.git
+cd vcloud-scenarios
+cd precise32
+vagrant up --provider=vcloud
+```
