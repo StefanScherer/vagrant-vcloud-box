@@ -18,6 +18,14 @@ resources/.ssh/known_hosts
 
 They will be copied into the box.
 
+On a unix host, use the following commands to fill the resources with your SSH key from the host.
+
+```bash
+mkdir resources/.ssh
+cp ~/.ssh/* resources/.ssh/
+cp ~/.vagrant.d/Vagrantfile resources/
+```
+
 ### Global Vagrantfile
 
 Your connection data into your vCloud org or other global Vagrant
