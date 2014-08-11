@@ -83,6 +83,16 @@ Just create the box
 vagrant up
 ```
 
+After provisioning has finished, open a terminal inside the Ubuntu desktop and
+call the following script
+
+```
+/vagrant/scripts/set-gnome-settings.sh
+```
+
+This will update the launcher icons, set german keyboard and some other gnome settings.
+At the moment this could not be done in provisioning scripts.
+
 Then open a terminal and you may clone GitHub repos with Vagrantfiles ready to
 rumble to your vCloud.
 
