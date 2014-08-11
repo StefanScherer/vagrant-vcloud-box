@@ -26,6 +26,12 @@ cp ~/.ssh/* resources/.ssh/
 cp ~/.vagrant.d/Vagrantfile resources/
 ```
 
+### Create a user vagrant in your vCloud org
+
+It is strongly recommended to use another user than your normal Windows user account name to log into your vCloud from vagrant. Just to avoid entering your Windows password in this `Vagrantfile`.
+
+So log into your vCloud org, go to Administration tab, then Users. Create an user `vagrant` there with local administration rights and a password.
+
 ### Global Vagrantfile
 
 Your connection data into your vCloud org or other global Vagrant
@@ -35,7 +41,8 @@ settings could be placed in the following file:
 resources/Vagrantfile
 ```
 
-This file will be copied into `~/.vagrant/Vagrantfile` in the guest VM.
+This file will be copied into `~/.vagrant.d/Vagrantfile` in the guest VM so that the `vagrant-vcloud` plugin can connect to your vCloud org from inside this VM.
+Enter the user name and password of the newly created user of your vCloud org.
 
 This file may look like this one:
 
@@ -66,6 +73,7 @@ Vagrant.configure("2") do |config|
 
 end
 ```
+
 
 ## Installation
 
