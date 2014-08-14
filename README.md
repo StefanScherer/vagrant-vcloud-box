@@ -95,7 +95,7 @@ At the moment this could not be done in provisioning scripts.
 Then open a terminal and you may clone GitHub repos with Vagrantfiles ready to
 rumble to your vCloud.
 
-## Build a Virutal Appliance (OVA)
+## Build a Virtual Appliance (OVA)
 
 To build a Virtual Appliance of this Vagrant box, use the script `buildova.sh` which builds the box, installs all software and tests the box with `vagrant-serverspec`.
 
