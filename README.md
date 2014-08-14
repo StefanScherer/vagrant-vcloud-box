@@ -99,6 +99,8 @@ rumble to your vCloud.
 
 To build a Virtual Appliance of this Vagrant box, use the script `buildova.sh` which builds the box, installs all software and tests the box with `vagrant-serverspec`.
 
+See the `test/` directory with all the serverspec tests that will run before building the OVA.
+
 ```bash
 ./buildova.sh
 ```
