@@ -21,6 +21,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision "shell", path: "scripts/set-german.sh", privileged: false
   config.vm.provision "shell", path: "scripts/set-launcher-favorites.sh", privileged: false
 
+  config.vm.provision :serverspec do |spec|
+    spec.pattern = 'test/*_spec.rb'
+  end
+
   config.vm.provider "virtualbox" do |vb|
     vb.gui = true
     vb.memory = 1024

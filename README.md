@@ -83,8 +83,7 @@ Just create the box
 vagrant up
 ```
 
-After provisioning has finished, open a terminal inside the Ubuntu desktop and
-call the following script
+After provisioning has finished, open a terminal inside the Ubuntu desktop and call the following script
 
 ```
 /vagrant/scripts/set-gnome-settings.sh
@@ -96,7 +95,17 @@ At the moment this could not be done in provisioning scripts.
 Then open a terminal and you may clone GitHub repos with Vagrantfiles ready to
 rumble to your vCloud.
 
-### Sample vCloud walktrough
+## Build a Virutal Appliance (OVA)
+
+To build a Virtual Appliance of this Vagrant box, use the script `buildova.sh` which builds the box, installs all software and tests the box with `vagrant-serverspec`.
+
+```bash
+./buildova.sh
+```
+
+If everything works fine and the tests run sucessfully, an OVA file `vagrant-vcloud-box.ova` is written into the current directory.
+
+## Sample vCloud walktrough
 
 Clone the following small sample repo to build a vCloud vApp with two Ubuntu boxes.
 
