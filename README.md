@@ -4,6 +4,17 @@ vagrant-vcloud-box
 Ubuntu Desktop box with preinstalled Vagrant and vagrant-vcloud plugin
 to have a working environment to connect to vCloud.
 
+## What's inside the box?
+
+* Ubuntu 14.04 Desktop
+* [Vagrant 1.6.3](http://vagrantup.com)
+* [vagrant-vcloud 0.4.1](https://github.com/frapposelli/vagrant-vcloud) Plugin to work with Vagrant in vCloud
+* rdesktop for the [`vagrant rdp`](https://docs.vagrantup.com/v2/cli/rdp.html) command
+* rsync to use the synced folder feature of Vagrant to transfer files into the vCloud guests.
+* git to clone GitHub repos
+* Google Chrome to connect to the vCloud Director web interface
+* nodejs + npm to work with [grunt-jenkins](http://documentup.com/sghill/grunt-jenkins) to save/restore Jenkins servers that are also built with `vagrant up`
+
 ## Preparation
 
 ### SSH Keys
