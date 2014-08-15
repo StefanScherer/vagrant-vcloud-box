@@ -1,18 +1,8 @@
-set result=0
+@set result=0
 
 set boxname=%1
 
-@if "%boxname:~-7%" == "_vmware" (
-  set boxname=%boxname:~0,-7%
-)
-@if "%boxname:~-7%" == "_vcloud" (
-  set boxname=%boxname:~0,-7%
-)
-@if "%boxname:~-11%" == "_virtualbox" (
-  set boxname=%boxname:~0,-11%
-)
-
-if "%boxname%x"=="x" (
+@if "%boxname%x"=="x" (
   echo "No boxname given!"
   result = 5
   goto :done
@@ -26,12 +16,16 @@ vagrant box add box-cutter/ubuntu1404-desktop http://roecloudsrv001/vagrant/ubun
 rem create and test the box
 vagrant up --provider=vmware_workstation
 if ERRORLEVEL 1 set result=%ERRORLEVEL%
-vagrant halt
 
+@echo Take a screenshot
 set /p vmx=< .vagrant\machines\default\vmware_workstation\id
+"C:\Program Files (x86)\VMware\VMware Workstation\vmrun.exe" -gu vagrant -gp vagrant captureScreen %vmx% screenshot.png
+
+vagrant halt
 
 set ova=%boxname%.ova
 del /F "%ova%"
+@echo Create OVA from VMX
 ovftool "%vmx%" "%ova%"
 if ERRORLEVEL 1 set result=%ERRORLEVEL%
 
