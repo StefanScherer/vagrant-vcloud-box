@@ -29,7 +29,7 @@ del /F "%ova%"
 ovftool "%vmx%" "%ova%"
 if ERRORLEVEL 1 set result=%ERRORLEVEL%
 
-rem vagrant destroy -f
+vagrant destroy -f
 
 rem remove the local box
 vagrant box remove box-cutter/ubuntu1404-desktop --provider=vmware_desktop
