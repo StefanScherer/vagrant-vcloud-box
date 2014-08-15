@@ -15,6 +15,8 @@ to have a working environment to connect to vCloud.
 * Google Chrome to connect to the vCloud Director web interface
 * nodejs + npm to work with [grunt-jenkins](http://documentup.com/sghill/grunt-jenkins) to save/restore Jenkins servers that are also built with `vagrant up`
 
+![Screenshot of vagrant-vcloud-box](pics/screenshot.png)
+
 ## Preparation
 
 ### SSH Keys
