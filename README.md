@@ -6,7 +6,7 @@ to have a working environment to connect to vCloud.
 
 ## What's inside the box?
 
-* Ubuntu 14.04 Desktop
+* Ubuntu 14.04 Desktop (with german keyboard and timezone)
 * [Vagrant 1.6.3](http://vagrantup.com)
 * [vagrant-vcloud 0.4.1](https://github.com/frapposelli/vagrant-vcloud) Plugin to work with Vagrant in vCloud
 * rdesktop for the [`vagrant rdp`](https://docs.vagrantup.com/v2/cli/rdp.html) command
