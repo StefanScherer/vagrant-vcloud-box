@@ -11,7 +11,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision "shell", path: "scripts/disable-updates.sh", privileged: false
   config.vm.provision "shell", path: "scripts/install-git.sh", privileged: false
   config.vm.provision "shell", path: "scripts/install-vagrant.sh", privileged: false
-  config.vm.provision "shell", path: "scripts/disable-screensaver.sh", privileged: false
   config.vm.provision "shell", path: "scripts/install-vagrant-vcloud.sh", privileged: false
   config.vm.provision "shell", path: "scripts/install-vagrantfile.sh", privileged: false
   config.vm.provision "shell", path: "scripts/install-ssh-keys.sh", privileged: false
@@ -19,7 +18,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision "shell", path: "scripts/install-rdesktop.sh", privileged: false
   config.vm.provision "shell", path: "scripts/install-chrome.sh", privileged: false
   config.vm.provision "shell", path: "scripts/set-german.sh", privileged: false
-  config.vm.provision "shell", path: "scripts/set-launcher-favorites.sh", privileged: false
+  config.vm.provision "shell", path: "scripts/restart-gnome-and-apply-gsettings.sh", privileged: false
 
   config.vm.provision :serverspec do |spec|
     spec.pattern = 'test/*_spec.rb'
