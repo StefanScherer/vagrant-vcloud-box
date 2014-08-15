@@ -117,7 +117,7 @@ If everything works fine and the tests run sucessfully, an OVA file `vagrant-vcl
 
 ### Automated with Jenkins on Windows
 
-The OVA for VMware is created automatically with a Jenkins job in my [basebox-slave](https://github.com/StefanScherer/basebox-slave) Jenkins build pipeline. The script for the build will be called with
+The OVA for VMware is created automatically with a [Jenkins job](https://raw.githubusercontent.com/StefanScherer/basebox-slave/master/jenkins-configuration/vagrant-vcloud-box_vmware/config.xml) in my [basebox-slave](https://github.com/StefanScherer/basebox-slave) Jenkins build pipeline. The script for the build will be called with
 
 ```bash
 bin\build.bat vagrant-vcloud-box_vmware
