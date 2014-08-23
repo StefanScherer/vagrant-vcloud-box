@@ -117,3 +117,18 @@ cd vcloud-scenarios
 cd precise32
 vagrant up --provider=vcloud
 ```
+
+## Build this box in vCloud
+
+You may also build this box inside your vCloud.
+
+For the `serverspec` test, be sure to remove old entries in your `~/.ssh/known_hosts` file. Otherwise all tests will fail.
+
+Now build the vApp in your vCloud with
+
+```
+vagrant up --provider=vcloud
+```
+
+It also forwards the RDP port, the `xrdp` server is installed, but there is still work to make it work correctly.
+

@@ -8,6 +8,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "box-cutter/ubuntu1404-desktop"
   config.vm.hostname = "vagrant-vcloud-box"
 
+  config.vm.provision "shell", path: "scripts/fix-resolv-conf.sh", privileged: false # only needed for vApp in vCloud
   config.vm.provision "shell", path: "scripts/disable-updates.sh", privileged: false
   config.vm.provision "shell", path: "scripts/install-git.sh", privileged: false
   config.vm.provision "shell", path: "scripts/install-vagrant.sh", privileged: false
@@ -16,6 +17,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision "shell", path: "scripts/install-vagrantfile.sh", privileged: false
   config.vm.provision "shell", path: "scripts/install-ssh-keys.sh", privileged: false
   config.vm.provision "shell", path: "scripts/install-node.sh", privileged: false
+  config.vm.provision "shell", path: "scripts/install-xrdp.sh", privileged: false
   config.vm.provision "shell", path: "scripts/install-rdesktop.sh", privileged: false
   config.vm.provision "shell", path: "scripts/install-chrome.sh", privileged: false
   config.vm.provision "shell", path: "scripts/set-german.sh", privileged: false
@@ -24,6 +26,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision :serverspec do |spec|
     spec.pattern = 'test/*_spec.rb'
   end
+
+  config.vm.network :forwarded_port, guest: 3389, host: 3389, id: "rdp", auto_correct: true
 
   config.vm.provider "virtualbox" do |vb|
     vb.gui = true
@@ -46,7 +50,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
   end
 
-  config.vm.provider "vcloud" do |vb|
+  config.vm.provider "vcloud" do |vb, override|
+    override.vm.box = "ubuntu1404-desktop"
+    vb.vapp_prefix = "vagrant-vcloud-box"
     vb.memory = 1024
     vb.cpus = 2
   end
