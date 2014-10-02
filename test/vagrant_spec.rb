@@ -6,7 +6,7 @@ describe 'Vagrant' do
   end
 
   describe command('vagrant plugin list') do
-    it { should return_stdout(/vagrant-vcloud .0\.4\.2./) }
+    it { should return_stdout(/vagrant-vcloud .0\.4\.3./) }
   end
 
   describe command('vagrant box list') do
