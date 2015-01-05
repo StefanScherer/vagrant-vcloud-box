@@ -1,5 +1,8 @@
 #!/bin/bash
-vagrant plugin install vagrant-vcloud
+# vagrant plugin install vagrant-vcloud
+echo "Installing Stefan's vagrant-vcloud 0.4.4 ..."
+wget --no-verbose --no-check-certificate -O vagrant-vcloud-0.4.4.gem https://github.com/StefanScherer/vagrant-vcloud/releases/download/v0.4.4/vagrant-vcloud-0.4.4.gem
+vagrant plugin install vagrant-vcloud-0.4.4.gem
 
 # install vagrant dummy boxes for vcloud
 wget https://github.com/StefanScherer/vcloud-scenarios/raw/master/dummy_box/dummy.box
