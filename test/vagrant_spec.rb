@@ -1,15 +1,13 @@
-require_relative 'spec_helper'
-
 describe 'Vagrant' do
   describe command('vagrant --version') do
-    it { should return_stdout(/1\.6\.5/) }
+    its(:stdout) { should match /1\.7\.1/ }
   end
 
   describe command('vagrant plugin list') do
-    it { should return_stdout(/vagrant-vcloud .0\.4\.3./) }
+    its(:stdout) { should match /vagrant-vcloud .0\.4\.4./ }
   end
 
   describe command('vagrant box list') do
-    it { should return_stdout(/ubuntu1404.*vcloud/) }
+    its(:stdout) { should match /ubuntu1404.*vcloud/ }
   end
 end

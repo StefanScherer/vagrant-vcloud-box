@@ -68,7 +68,7 @@ Vagrant.configure("2") do |config|
   if Vagrant.has_plugin?("vagrant-vcloud")
     # vCloud Director provider settings
     config.vm.provider :vcloud do |vcloud|
-      vcloud.hostname = "https://yourvcloudhost"
+      vcloud.hostname = "https://yourvcloudhost.fqdn"
       vcloud.username = "vagrant"
       vcloud.password = "XXXXXXX"
 
