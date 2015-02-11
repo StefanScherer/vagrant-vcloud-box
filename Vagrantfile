@@ -14,7 +14,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision "shell", path: "scripts/install-vagrant.sh", privileged: false
   config.vm.provision "shell", path: "scripts/install-vagrant-vcloud.sh", privileged: false
   config.vm.provision "shell", path: "scripts/install-vagrantfile.sh", privileged: false
-  config.vm.provision "shell", path: "scripts/install-ssh-keys.sh", privileged: false
   config.vm.provision "shell", path: "scripts/install-node.sh", privileged: false
   config.vm.provision "shell", path: "scripts/install-xrdp.sh", privileged: false
   config.vm.provision "shell", path: "scripts/install-rdesktop.sh", privileged: false
@@ -25,6 +24,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision :serverspec do |spec|
     spec.pattern = 'test/*_spec.rb'
   end
+
+  config.ssh.forward_agent = true
 
   config.vm.network :forwarded_port, guest: 3389, host: 3389, id: "rdp", auto_correct: true
 
