@@ -19,25 +19,13 @@ to have a working environment to connect to vCloud.
 
 ## Preparation
 
-### SSH Keys
+### SSH Agent
 
-To clone private GitHub repos, you may place your SSH key here: 
+SSH agent forwarding is enabled to allow chaining SSH connections using ssh-agent. This is useful if you want to clone a private git repository from inside the box.
 
-```
-resources/.ssh/id_rsa
-resources/.ssh/id_rsa.pub
-resources/.ssh/known_hosts
-```
+There is a good tutorial on using ssh-agent at http://mah.everybody.org/docs/ssh
 
-They will be copied into the box.
-
-On a unix host, use the following commands to fill the resources with your SSH key from the host.
-
-```bash
-mkdir resources/.ssh
-cp ~/.ssh/* resources/.ssh/
-cp ~/.vagrant.d/Vagrantfile resources/
-```
+Warning: Never connect to an untrusted host via ssh while ssh-agent is enabled.
 
 ### Create a user vagrant in your vCloud org
 
