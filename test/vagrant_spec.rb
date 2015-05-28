@@ -1,6 +1,6 @@
 describe 'Vagrant' do
   describe command('vagrant --version') do
-    its(:stdout) { should match /1\.7\.1/ }
+    its(:stdout) { should match /1\.7\.2/ }
   end
 
   describe command('vagrant plugin list') do
