@@ -5,7 +5,7 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
-  config.vm.box = "box-cutter/ubuntu1404-desktop"
+  config.vm.box = "boxcutter/ubuntu1404-desktop"
   config.vm.hostname = "vagrant-vcloud-box"
 
   config.vm.provision "shell", path: "scripts/fix-resolv-conf.sh", privileged: false # only needed for vApp in vCloud
