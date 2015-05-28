@@ -30,10 +30,10 @@ done
 # reset the translated args
 eval set -- $args
 # now we can process with getopt
-while getopts "hvu:o:" opt; do
+while getopts "hvu:o:n:" opt; do
   case $opt in
     h) usage ;;
-    u) USER=$OPTARG ;;
+    u) USERNAME=$OPTARG ;;
     n) HOST=$OPTARG ;;
     o) ORG=$OPTARG ;;
     \?) usage ;;
@@ -45,7 +45,7 @@ while getopts "hvu:o:" opt; do
 done
 shift $((OPTIND -1))
 
-if [ -z "$USER" ]; then
+if [ -z "$USERNAME" ]; then
   echo "Option --username must be specified!"
   exit 1
 fi
@@ -63,14 +63,14 @@ fi
 which http >/dev/null
 if [ $? -eq 1 ]; then
   echo "Tool http (or httpie) not installed. Install it first with"
-  echo "sudo pip install --upgrade httpie"
+  echo "apt-get install -y httpie"
   exit 1
 fi
 
 which jq >/dev/null
 if [ $? -eq 1 ]; then
   echo "Tool jq not installed. Install it first with"
-  echo "sudo apt-get install -y jq"
+  echo "apt-get install -y jq"
   exit 1
 fi
 
@@ -82,10 +82,10 @@ if [ $? -eq 1 ]; then
 fi
 
 
-session=vcloud-$USER-$ORG
+session=vcloud-$USERNAME-$ORG
 url=https://$HOST
 
-org_url=$(http --session=$session --verify=no -a $USER@$ORG POST $url/api/sessions 'Accept:application/*+xml;version=5.5' | xml2json | jq '.Session.Link[] | select(.type=="application/vnd.vmware.vcloud.org+xml") | .href' | sed -e 's/^"//' -e 's/"$//')
+org_url=$(http --session=$session --verify=no -a $USERNAME@$ORG POST $url/api/sessions 'Accept:application/*+xml;version=5.5' | xml2json | jq '.Session.Link[] | select(.type=="application/vnd.vmware.vcloud.org+xml") | .href' | sed -e 's/^"//' -e 's/"$//')
 org_name=$(http --session=$session --verify=no $org_url | xml2json | jq '.Org.name')
 
 vdc_url=$(http --session=$session --verify=no $org_url | xml2json | jq '.Org.Link[] | select(.type=="application/vnd.vmware.vcloud.vdc+xml") | .href' | sed -e 's/^"//' -e 's/"$//')
@@ -104,7 +104,7 @@ echo ""
 echo "Vagrant.configure(\"2\") do |config|"
 echo "  if Vagrant.has_plugin?(\"vagrant-vcloud\")"
 echo "    vcloud.hostname            = \"$url\""
-echo "    vcloud.username            = \"$USER\""
+echo "    vcloud.username            = \"$USERNAME\""
 echo "    vcloud.password            = ENV['VCLOUD_PASSWORD'] || \"\""
 echo "    vcloud.org_name            = $org_name"
 echo "    vcloud.vdc_name            = $vdc_name"
