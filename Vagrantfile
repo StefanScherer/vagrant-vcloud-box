@@ -17,6 +17,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision "shell", path: "scripts/install-node.sh", privileged: false
   config.vm.provision "shell", path: "scripts/install-xrdp.sh", privileged: false
   config.vm.provision "shell", path: "scripts/install-rdesktop.sh", privileged: false
+  config.vm.provision "shell", path: "scripts/install-httpie.sh", privileged: false
+  config.vm.provision "shell", path: "scripts/install-xml2json.sh", privileged: false
+  config.vm.provision "shell", path: "scripts/install-jq.sh", privileged: false
   config.vm.provision "shell", path: "scripts/install-chrome.sh", privileged: false
   config.vm.provision "shell", path: "scripts/set-german.sh", privileged: false
   config.vm.provision "shell", path: "scripts/restart-gnome-and-apply-gsettings.sh", privileged: false

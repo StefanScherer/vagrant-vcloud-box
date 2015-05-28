@@ -75,6 +75,37 @@ Vagrant.configure("2") do |config|
 end
 ```
 
+### Retrieve vCloud settings for global Vagrantfile
+
+If you don't know all these values, don't worry. Just create the box and use the script `/vagrant/scripts/retrieve-vcloud-settings.sh` from inside the VM with your username and vCloud org name. The scripts tries to retrieve all these values for you.
+
+```bash
+$ ./retrieve-vagrant-vcloud-settings.sh --username stefan.scherer --orgname ss --hostname mycloud.mydomain
+http: password for stefan.scherer@ss@mycloud.mydomain:
+Put this lines to your global ~/.vagrant.d/Vagrantfile
+
+Vagrant.configure("2") do |config|
+  if Vagrant.has_plugin?("vagrant-vcloud")
+    vcloud.hostname            = "https://mycloud.mydomain"
+    vcloud.username            = "stefan.scherer"
+    vcloud.password            = ENV['VCLOUD_PASSWORD'] || ""
+    vcloud.org_name            = "XX"
+    vcloud.vdc_name            = "XX-VDC"
+    # vcloud.catalog_name        = "GLOBAL-CATALOG"
+    # vcloud.ip_subnet           = "172.16.32.1/255.255.255.0"]
+    # vcloud.ip_dns              = ["4.4.4.4", "8.8.8.8"]
+    vcloud.vdc_network_name    = "XX-INTERNAL"
+    vcloud.vdc_edge_gateway    = "XX-EDGE"
+    vcloud.vdc_edge_gateway_ip = "1.2.3.4"
+  end
+end
+```
+
+This script can also be used independently, but the script needs some other tools to work:
+
+* [httpie](http://httpie.org) - a nice command line http client
+* [xml2json](https://github.com/parmentf/xml2json) - a XML 2 JSON parser
+* [jq](http://stedolan.github.io/jq/) - the swiss army knife parsing JSON
 
 ## Installation
 
@@ -137,4 +168,3 @@ vagrant up --provider=vcloud
 ```
 
 It also forwards the RDP port, the `xrdp` server is installed, but there is still work to make it work correctly.
-
