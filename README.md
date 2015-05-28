@@ -101,6 +101,12 @@ Vagrant.configure("2") do |config|
 end
 ```
 
+This script can also be used independently, but the script needs some other tools to work:
+
+* [httpie](http://httpie.org) - a nice command line http client
+* [xml2json](https://github.com/parmentf/xml2json) - a XML 2 JSON parser
+* [jq](http://stedolan.github.io/jq/) - the swiss army knife parsing JSON
+
 ## Installation
 
 Just create the box
